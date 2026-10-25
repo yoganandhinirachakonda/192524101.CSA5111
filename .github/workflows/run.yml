@@ -1,0 +1,17 @@
+name: 20 Cryptography Experiments
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run All Experiments Separately
+        run: |
+          for file in *.c; do
+            echo "========================================"
+            echo "EXPERIMENT: $file"
+            echo "========================================"
+            gcc "$file" -o prog
+            echo "HELLO" | ./prog
+            echo ""
+          done
